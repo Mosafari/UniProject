@@ -21,7 +21,7 @@ namespace test1
             List<Books> books = new List<Books>();
             
             Console.WriteLine("Help :");
-            Console.WriteLine("enter 1 to add a book .\nenter 2 to del a book .\nenter 3 to update a book . \nenter 4 to show list .\nenter 11 to see this  help .\nand 0 to exit .\n"); 
+            Console.WriteLine("enter 1 to add a book .\nenter 2 to del a book .\nenter 3 to update a book . \nenter 4 to show list .enter 5 sort books by price .\nenter 6 search with book's name .\nenter 7 show book with the highest price .\nenter 8 show book with with the lowest price .\nenter 11 to see this  help .\nand 0 to exit .\n"); 
             while(true)
             {
                 Console.WriteLine("choose your action :");
@@ -134,6 +134,10 @@ namespace test1
                     Console.WriteLine("enter 2 to del a book .");
                     Console.WriteLine("enter 3 to update a book .");
                     Console.WriteLine("enter 4 to show list .");
+                    Console.WriteLine("enter 5 sort books by price .");
+                    Console.WriteLine("enter 6 search with book's name .");
+                    Console.WriteLine("enter 7 show book with the highest price .");
+                    Console.WriteLine("enter 8 show book with with the lowest price .");
                     Console.WriteLine("enter 11 to see this  help .");
                     Console.WriteLine("and 0 to exit .\n");
                 }
