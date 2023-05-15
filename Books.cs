@@ -109,6 +109,20 @@ namespace test1
                         }
                     }
                 if (action == "8") // show book with with the lowest price
+                {
+                    if (books.Count > 0)
+                    {
+                        Books minPriceBook = books.OrderBy(x => x.price).FirstOrDefault();
+                        Console.WriteLine("Book with lowest price: ");
+                        Console.WriteLine("bookname: " + minPriceBook.bname);
+                        Console.WriteLine("author: " + minPriceBook.author);
+                        Console.WriteLine("price: " + minPriceBook.price);
+                    }
+                    else
+                    {
+                        Console.WriteLine("No result.");
+                    }
+                }
                 if(action == "11") // show help
                 {
                     // Console.WriteLine("enter 1 to add a book .\nenter 1 to add a book .\nenter 2 to add a book .\nenter 3 to update a book . \
