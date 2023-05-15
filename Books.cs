@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace test1
@@ -21,7 +22,7 @@ namespace test1
             List<Books> books = new List<Books>();
             
             Console.WriteLine("Help :");
-            Console.WriteLine("enter 1 to add a book .\nenter 2 to del a book .\nenter 3 to update a book . \nenter 4 to show list .enter 5 sort books by price .\nenter 6 search with book's name .\nenter 7 show book with the highest price .\nenter 8 show book with with the lowest price .\nenter 11 to see this  help .\nand 0 to exit .\n"); 
+            Console.WriteLine("enter 1 to add a book .\nenter 2 to del a book .\nenter 3 to update a book . \nenter 4 to show list .\nenter 5 sort books by price .\nenter 6 search with book's name .\nenter 7 show book with the highest price .\nenter 8 show book with with the lowest price .\nenter 11 to see this  help .\nand 0 to exit .\n"); 
             while(true)
             {
                 Console.WriteLine("choose your action :");
@@ -40,8 +41,8 @@ namespace test1
                 {
                     Console.WriteLine("enter book id: ");
                     int index = int.Parse(Console.ReadLine());
-                    books[index] = null;
-                    books.RemoveAt(index);
+                    books[index-1] = null;
+                    books.RemoveAt(index-1);
 
                 }
                 if(action == "3") // update book by id
@@ -49,18 +50,18 @@ namespace test1
                     Console.WriteLine("enter book id: ");
                     int index = int.Parse(Console.ReadLine());
                     Console.WriteLine("update book name:");
-                    books[index].bname = Console.ReadLine();
+                    books[index-1].bname = Console.ReadLine();
                     Console.WriteLine("update author's name:");
-                    books[index].author = Console.ReadLine();
+                    books[index-1].author = Console.ReadLine();
                     Console.WriteLine("update price:");
-                    books[index].price = float.Parse(Console.ReadLine());
+                    books[index-1].price = float.Parse(Console.ReadLine());
                 }
                 if(action == "4") // show list
                 {
                     Console.WriteLine("id, bookname, author, price ");
                     for (int i=0; i<books.Count; i++) 
                         {
-                            Console.WriteLine(i + ", "+books[i].bname+ ", "+books[i].author+ ", "+books[i].price);
+                            Console.WriteLine((i+1) + ", "+books[i].bname+ ", "+books[i].author+ ", "+books[i].price);
                         }
                         Console.WriteLine("\n");
 
@@ -70,8 +71,9 @@ namespace test1
                     List<Books> sortedList = books.OrderByDescending(x => x.price).ToList();
                     for (int i = 0; i < sortedList.Count; i++)
                     {
-                        Console.WriteLine(i + ", " + sortedList[i].bname + ", " + sortedList[i].author + ", " + sortedList[i].price);
+                        Console.WriteLine((i+1) + ", " + sortedList[i].bname + ", " + sortedList[i].author + ", " + sortedList[i].price);
                     }
+                    Console.WriteLine("\n");
 
                 }
                 if (action == "6") // search with book name and outputs
@@ -85,8 +87,9 @@ namespace test1
                             Console.WriteLine("id, bookname, author, price ");
                             for (int i = 0; i < matchedBooks.Count; i++)
                             {
-                                Console.WriteLine(i + ", " + matchedBooks[i].bname + ", " + matchedBooks[i].author + ", " + matchedBooks[i].price);
+                                Console.WriteLine((i+1) + ", " + matchedBooks[i].bname + ", " + matchedBooks[i].author + ", " + matchedBooks[i].price);
                             }
+                            Console.WriteLine("\n");
                         }
                         else
                         {
@@ -99,9 +102,9 @@ namespace test1
                         {
                             Books maxPriceBook = books.OrderByDescending(x => x.price).FirstOrDefault();
                             Console.WriteLine("Book with largest price: ");
-                            Console.WriteLine("bookname: ",maxPriceBook.bname);
-                            Console.WriteLine("author: ",maxPriceBook.author);
-                            Console.WriteLine("price: ",maxPriceBook.price);
+                            Console.WriteLine("bookname: "+maxPriceBook.bname);
+                            Console.WriteLine("author: "+maxPriceBook.author);
+                            Console.WriteLine("price: "+maxPriceBook.price);
                         }
                         else
                         {
